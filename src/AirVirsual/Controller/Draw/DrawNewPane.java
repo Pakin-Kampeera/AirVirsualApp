@@ -1,6 +1,8 @@
 package AirVirsual.Controller.Draw;
 
+import AirVirsual.Controller.AllEventHandler;
 import AirVirsual.Controller.Obj;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -13,7 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-
+import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
 public class DrawNewPane {
@@ -98,6 +100,37 @@ public class DrawNewPane {
         face.setPickOnBounds(true);
         face.setPreserveRatio(true);
 
+        Image image3 = new Image(getClass().getResourceAsStream("/AirVirsual/assets/delete.png"));
+        ImageView trash = new ImageView(image3);
+        trash.setFitHeight(21);
+        trash.setFitWidth(21);
+        trash.setLayoutX(130);
+        trash.setLayoutY(6);
+        trash.setPickOnBounds(true);
+        trash.setPreserveRatio(true);
+        trash.setStyle("-fx-background-color:transparent");
+        trash.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                AllEventHandler.onDelete();
+                event.consume();
+            }
+        });
+
+        trash.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                trash.setStyle("-fx-background-color:#dae7f3;");
+            }
+        });
+
+        trash.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                trash.setStyle("-fx-background-color:transparent");
+            }
+        });
+
         Pane rightPane = new Pane();
         rightPane.setPrefHeight(200);
         rightPane.setPrefWidth(157);
@@ -117,7 +150,7 @@ public class DrawNewPane {
         subLocation.setPrefWidth(132);
         subLocation.setTextFill(Paint.valueOf("#7d90a8"));
 
-        rightPane.getChildren().addAll(mainLocation, subLocation);
+        rightPane.getChildren().addAll(mainLocation, subLocation, trash);
 
         innerPane.getChildren().addAll(icon, temp);
 
