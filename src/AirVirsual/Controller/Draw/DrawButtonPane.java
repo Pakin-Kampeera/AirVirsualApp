@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 public class DrawButtonPane {
     private Pane subPane;
     private Button button1, button2;
+    private AllEventHandler allEventHandler = new AllEventHandler();
 
     public DrawButtonPane(){ }
 
@@ -22,7 +23,7 @@ public class DrawButtonPane {
         button1.setPrefHeight(27);
         button1.setPrefWidth(131);
         button1.setOnAction(actionEvent -> {
-            AllEventHandler.onAdd();
+            allEventHandler.onAdd();
         });
 
         button2 = new Button("Manage Place");

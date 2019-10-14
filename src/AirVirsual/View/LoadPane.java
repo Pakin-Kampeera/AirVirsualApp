@@ -12,8 +12,10 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 public class LoadPane {
-    private static DrawButtonPane buttonPane = new DrawButtonPane();
+    private DrawButtonPane buttonPane = new DrawButtonPane();
     private FetchData fetchData = new FetchData();
+    public AnchorPane anchorPane;
+    public VBox vBox;
 
     public LoadPane() {
 
@@ -27,26 +29,25 @@ public class LoadPane {
         Main.scrollPane.setPrefWidth(311);
         Main.scrollPane.setStyle("-fx-background-color: lightgrey");
 
-        Main.anchorPane = new AnchorPane();
-        Main.anchorPane.setStyle("-fx-background-color: lightgrey");
+        anchorPane = new AnchorPane();
+        anchorPane.setStyle("-fx-background-color: lightgrey");
 
-        Main.vBox = new VBox();
-        Main.vBox.setAlignment(Pos.CENTER);
-        Main.vBox.setPrefWidth(309);
-        Main.vBox.setStyle("-fx-background-color: lightgrey");
+        vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPrefWidth(309);
+        vBox.setStyle("-fx-background-color: lightgrey");
 
         startToFetch();
         loadWidget();
-
-        Main.anchorPane.getChildren().add(Main.vBox);
-        Main.vBox.getChildren().add(buttonPane.createButtonPane());
-        Main.scrollPane.setContent(Main.anchorPane);
     }
 
     public void loadWidget() {
         for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
-            Main.vBox.getChildren().add(DrawNewPane.getAllPane().get(i));
+            vBox.getChildren().add(DrawNewPane.getAllPane().get(i));
         }
+        anchorPane.getChildren().add(vBox);
+        vBox.getChildren().add(buttonPane.createButtonPane());
+        Main.scrollPane.setContent(anchorPane);
     }
 
     public void startToFetch() throws IOException {
@@ -54,4 +55,6 @@ public class LoadPane {
         fetchData.fetch("Phuket", "Phuket", "Thailand");
         fetchData.fetch("Chiang Mai", "Chiang Mai", "Thailand");
     }
+
+
 }

@@ -1,5 +1,6 @@
 package AirVirsual.Controller;
 
+import AirVirsual.View.LoadPane;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -8,7 +9,9 @@ import javafx.scene.layout.GridPane;
 import java.util.Optional;
 
 public class AllEventHandler {
-    public static void onAdd() {
+    private FetchData fetchData = new FetchData();
+    private LoadPane loadPane = new LoadPane();
+    public void onAdd() {
         try {
             Dialog<Results> dialog = new Dialog<>();
             dialog.setTitle("Add Place");
@@ -52,7 +55,7 @@ public class AllEventHandler {
                 System.out.println("City = " +
                         results.city + ", State = " + results.state + ", Country = " + results.country);
                 try {
-
+                    fetchData.fetch(results.city, results.state, results.country);
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid Place");
@@ -68,7 +71,7 @@ public class AllEventHandler {
         }
     }
 
-    private static class Results {
+    private class Results {
 
         String city, state, country;
 

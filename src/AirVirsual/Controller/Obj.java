@@ -3,7 +3,7 @@ package AirVirsual.Controller;
 import org.json.JSONObject;
 
 public class Obj {
-    private static int aqi;
+    private int aqi;
     private String downColor;
     private String quality;
     private String weather;

@@ -11,10 +11,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    private static Scene mainScene;
+    private Scene mainScene;
     public static ScrollPane scrollPane;
-    public static AnchorPane anchorPane;
-    public static VBox vBox;
     public LoadPane loadPane;
 
     @Override
