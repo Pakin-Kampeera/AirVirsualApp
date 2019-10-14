@@ -35,6 +35,7 @@ public class LoadPane {
         Main.vBox.setPrefWidth(309);
         Main.vBox.setStyle("-fx-background-color: lightgrey");
 
+        startToFetch();
         loadWidget();
 
         Main.anchorPane.getChildren().add(Main.vBox);
@@ -42,9 +43,8 @@ public class LoadPane {
         Main.scrollPane.setContent(Main.anchorPane);
     }
 
-    public void loadWidget() throws IOException {
-        startToFetch();
-        for(int i = 0; i < DrawNewPane.getAllPane().size(); i++){
+    public void loadWidget() {
+        for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
             Main.vBox.getChildren().add(DrawNewPane.getAllPane().get(i));
         }
     }
