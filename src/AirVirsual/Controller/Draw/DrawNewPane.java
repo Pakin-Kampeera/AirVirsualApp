@@ -100,11 +100,11 @@ public class DrawNewPane {
         face.setPickOnBounds(true);
         face.setPreserveRatio(true);
 
-        Image image3 = new Image(getClass().getResourceAsStream("/AirVirsual/assets/delete.png"));
+        Image image3 = new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png"));
         ImageView trash = new ImageView(image3);
-        trash.setFitHeight(21);
-        trash.setFitWidth(21);
-        trash.setLayoutX(130);
+        trash.setFitHeight(15);
+        trash.setFitWidth(15);
+        trash.setLayoutX(135);
         trash.setLayoutY(6);
         trash.setPickOnBounds(true);
         trash.setPreserveRatio(true);
@@ -120,14 +120,14 @@ public class DrawNewPane {
         trash.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                trash.setStyle("-fx-background-color:#dae7f3;");
+                trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/clear.png")));
             }
         });
 
         trash.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                trash.setStyle("-fx-background-color:transparent");
+                trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png")));
             }
         });
 

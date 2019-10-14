@@ -71,11 +71,21 @@ public class AllEventHandler {
     }
 
     public static void onDelete() {
-        System.out.println("Trash bin clicked!");
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Do you really want to delete this?");
+        alert.getButtonTypes().addAll(ButtonType.NO, ButtonType.YES);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // ... user chose OK
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
     }
 
-    public static void onMouseOver(){
-
+    public static void onRefresh(){
+        System.out.println("Refresh clicked!");
     }
 
     private static class Results {
