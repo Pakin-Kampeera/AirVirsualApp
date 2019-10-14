@@ -2,7 +2,6 @@ package AirVirsual.Controller.Draw;
 
 import AirVirsual.Controller.AllEventHandler;
 import AirVirsual.Controller.Obj;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -16,14 +15,11 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.input.MouseEvent;
+
 import java.util.ArrayList;
 
 public class DrawNewPane {
     private static ArrayList<Node> allPane = new ArrayList<>();
-
-    public DrawNewPane() {
-
-    }
 
     public void createNewPane(Obj obj) {
         Pane mainPane = new Pane();
@@ -109,26 +105,21 @@ public class DrawNewPane {
         trash.setPickOnBounds(true);
         trash.setPreserveRatio(true);
         trash.setStyle("-fx-background-color:transparent");
-        trash.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                AllEventHandler.onDelete();
-                event.consume();
-            }
+
+        //Trash click
+        trash.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            AllEventHandler.onDelete();
+            event.consume();
         });
 
-        trash.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/clear.png")));
-            }
+        //Trash mouse over
+        trash.setOnMouseEntered(event -> {
+            trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/clear.png")));
         });
 
-        trash.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png")));
-            }
+        //Trash mouse exit
+        trash.setOnMouseExited(event -> {
+            trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png")));
         });
 
         Pane rightPane = new Pane();

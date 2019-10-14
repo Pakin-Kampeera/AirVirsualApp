@@ -5,10 +5,11 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class Main extends Application {
-    private Scene mainScene;
+    private static Scene mainScene;
     public static ScrollPane scrollPane;
     public LoadPane loadPane;
 

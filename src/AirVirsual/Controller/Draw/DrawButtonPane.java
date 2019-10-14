@@ -8,9 +8,7 @@ public class DrawButtonPane {
     private Pane subPane;
     private Button button1, button2;
 
-    public DrawButtonPane(){ }
-
-    public Pane createButtonPane(){
+    public Pane createButtonPane() {
         subPane = new Pane();
         subPane.setPrefHeight(66);
         subPane.setPrefWidth(312);
@@ -21,6 +19,8 @@ public class DrawButtonPane {
         button1.setMnemonicParsing(false);
         button1.setPrefHeight(27);
         button1.setPrefWidth(131);
+
+        //Add place click
         button1.setOnAction(actionEvent -> {
             AllEventHandler.onAdd();
         });
@@ -31,6 +31,8 @@ public class DrawButtonPane {
         button2.setMnemonicParsing(false);
         button2.setPrefHeight(27);
         button2.setPrefWidth(131);
+
+        //Refresh click
         button2.setOnAction(actionEvent -> {
             AllEventHandler.onRefresh();
         });

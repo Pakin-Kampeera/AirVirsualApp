@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 import java.io.IOException;
 
 public class LoadPane {
@@ -15,10 +16,6 @@ public class LoadPane {
     private FetchData fetchData = new FetchData();
     public AnchorPane anchorPane;
     public VBox vBox;
-
-    public LoadPane() {
-
-    }
 
     public void initialLoadPane() throws IOException {
         Main.scrollPane = new ScrollPane();
@@ -48,11 +45,11 @@ public class LoadPane {
         vBox.getChildren().add(buttonPane.createButtonPane());
         Main.scrollPane.setContent(anchorPane);
     }
-
+    
     public void startToFetch() throws IOException {
         fetchData.fetch("Bangkok", "Bangkok", "Thailand");
-//        fetchData.fetch("Phuket", "Phuket", "Thailand");
-//        fetchData.fetch("Chiang Mai", "Chiang Mai", "Thailand");
+        fetchData.fetch("Phuket", "Phuket", "Thailand");
+        fetchData.fetch("Chiang Mai", "Chiang Mai", "Thailand");
     }
 
 

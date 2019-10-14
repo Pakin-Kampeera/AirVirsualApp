@@ -13,10 +13,7 @@ public class Obj {
     private String face;
     private String headColor;
 
-    public Obj() {
-    }
-
-    public void createObj(JSONObject data){
+    public void createObj(JSONObject data) {
         aqi = data.getJSONObject("current").getJSONObject("pollution").getInt("aqius");
         this.headColor = headColorQuality(aqi);
         this.downColor = downColorQuality(aqi);
@@ -29,7 +26,7 @@ public class Obj {
         printData();
     }
 
-    public void printData(){
+    public void printData() {
         System.out.println(weather);
         System.out.println(quality);
         System.out.println(this.aqi + " US AQI");

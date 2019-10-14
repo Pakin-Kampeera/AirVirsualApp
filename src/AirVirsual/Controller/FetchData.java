@@ -13,9 +13,6 @@ public class FetchData {
     private Obj obj = new Obj();
     private DrawNewPane drawNewPane = new DrawNewPane();
 
-    public FetchData() {
-    }
-
     private String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
         int cp;

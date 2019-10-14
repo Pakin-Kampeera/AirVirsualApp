@@ -77,14 +77,14 @@ public class AllEventHandler {
         alert.getButtonTypes().addAll(ButtonType.NO, ButtonType.YES);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             // ... user chose OK
         } else {
             // ... user chose CANCEL or closed the dialog
         }
     }
 
-    public static void onRefresh(){
+    public static void onRefresh() {
         System.out.println("Refresh clicked!");
     }
 
