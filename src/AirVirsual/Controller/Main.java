@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main extends Application {
     private static Scene mainScene;
     public static ScrollPane scrollPane;
-    public LoadPane loadPane;
+    private LoadPane loadPane;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -22,7 +22,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public void initMainPane() throws IOException {
+    private void initMainPane() throws IOException {
         loadPane = new LoadPane();
         loadPane.initialLoadPane();
     }

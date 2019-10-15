@@ -113,14 +113,10 @@ public class DrawNewPane {
         });
 
         //Trash mouse over
-        trash.setOnMouseEntered(event -> {
-            trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/clear.png")));
-        });
+        trash.setOnMouseEntered(event -> trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/clear.png"))));
 
         //Trash mouse exit
-        trash.setOnMouseExited(event -> {
-            trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png")));
-        });
+        trash.setOnMouseExited(event -> trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png"))));
 
         Pane rightPane = new Pane();
         rightPane.setPrefHeight(200);

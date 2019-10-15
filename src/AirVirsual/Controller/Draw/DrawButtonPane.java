@@ -22,9 +22,7 @@ public class DrawButtonPane {
         button1.setFocusTraversable(false);
 
         //Add place click
-        button1.setOnAction(actionEvent -> {
-            AllEventHandler.onAdd();
-        });
+        button1.setOnAction(event -> AllEventHandler.onAdd());
 
         button2 = new Button("Refresh");
         button2.setLayoutX(159);
@@ -35,9 +33,7 @@ public class DrawButtonPane {
         button2.setFocusTraversable(false);
 
         //Refresh click
-        button2.setOnAction(actionEvent -> {
-            AllEventHandler.onRefresh();
-        });
+        button2.setOnAction(event -> AllEventHandler.onRefresh());
 
         subPane.getChildren().addAll(button1, button2);
 

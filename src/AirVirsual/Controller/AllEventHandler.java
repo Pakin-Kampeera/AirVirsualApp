@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-import java.io.IOException;
 import java.util.Optional;
 
 public class AllEventHandler {
@@ -68,7 +67,7 @@ public class AllEventHandler {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid Place");
                     alert.setHeaderText(null);
-                    alert.setContentText(String.format("%s, %s, %s is invalid!", results.city, results.state, results.country));
+                    alert.setContentText(String.format("%s, %s, %s is invalid!", results.city.substring(0, 1).toUpperCase() + results.city.substring(1), results.state.substring(0, 1).toUpperCase() + results.state.substring(1), results.country.substring(0, 1).toUpperCase() + results.country.substring(1)));
                     alert.showAndWait();
                     onAdd();
                     e.printStackTrace();
@@ -86,7 +85,7 @@ public class AllEventHandler {
         alert.getButtonTypes().addAll(ButtonType.NO, ButtonType.YES);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.YES) {
+        if (result.isPresent()) {
             LoadPane.vBox.getChildren().removeAll(parent);
             DrawNewPane.getAllPane().remove(parent);
         }
@@ -103,7 +102,7 @@ public class AllEventHandler {
     private static class Results {
         String city, state, country;
 
-        public Results(String city, String state, String country) {
+        private Results(String city, String state, String country) {
             this.city = city;
             this.state = state;
             this.country = country;

@@ -26,10 +26,10 @@ public class Obj {
         printData();
     }
 
-    public void printData() {
+    private void printData() {
         System.out.println(weather);
         System.out.println(quality);
-        System.out.println(this.aqi + " US AQI");
+        System.out.println(aqi + " US AQI");
         System.out.println(mainLocation);
         System.out.println(location);
         System.out.println(icon);
