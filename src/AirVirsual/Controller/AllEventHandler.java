@@ -90,7 +90,11 @@ public class AllEventHandler {
     }
 
     public static void onRefresh() {
-        System.out.println("Refresh clicked!");
+        for(int i = 0; i < DrawNewPane.getAllPane().size(); i++){
+            LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
+        }
+        LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
+        LoadPane.loadWidget();
     }
 
     private static class Results {
