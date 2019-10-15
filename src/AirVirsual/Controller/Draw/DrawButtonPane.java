@@ -4,8 +4,6 @@ import AirVirsual.Controller.AllEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
-
 public class DrawButtonPane {
     private Pane subPane;
     private Button button1, button2;

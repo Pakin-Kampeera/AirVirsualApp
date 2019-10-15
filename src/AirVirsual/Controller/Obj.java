@@ -100,7 +100,7 @@ public class Obj {
         } else if (aqi >= 201 && aqi <= 300) {
             return "purple";
         } else if (aqi >= 301 && aqi <= 500) {
-            return "dark_purple";
+            return "maroon";
         }
         return null;
     }
