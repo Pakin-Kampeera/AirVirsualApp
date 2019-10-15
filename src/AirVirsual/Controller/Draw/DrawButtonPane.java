@@ -19,6 +19,7 @@ public class DrawButtonPane {
         button1.setMnemonicParsing(false);
         button1.setPrefHeight(27);
         button1.setPrefWidth(131);
+        button1.setFocusTraversable(false);
 
         //Add place click
         button1.setOnAction(actionEvent -> {
@@ -31,6 +32,7 @@ public class DrawButtonPane {
         button2.setMnemonicParsing(false);
         button2.setPrefHeight(27);
         button2.setPrefWidth(131);
+        button2.setFocusTraversable(false);
 
         //Refresh click
         button2.setOnAction(actionEvent -> {

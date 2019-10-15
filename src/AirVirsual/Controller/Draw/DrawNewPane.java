@@ -108,7 +108,7 @@ public class DrawNewPane {
 
         //Trash click
         trash.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            AllEventHandler.onDelete();
+            AllEventHandler.onDelete(trash.getParent().getParent().getParent());
             event.consume();
         });
 
@@ -152,6 +152,7 @@ public class DrawNewPane {
         mainPane.getChildren().add(flowPane);
 
         allPane.add(mainPane);
+
         System.out.println(allPane);
     }
 

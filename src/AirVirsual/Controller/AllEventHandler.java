@@ -1,10 +1,12 @@
 package AirVirsual.Controller;
 
+import AirVirsual.Controller.Draw.DrawNewPane;
+import AirVirsual.View.LoadPane;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-
 import java.util.Optional;
 
 public class AllEventHandler {
@@ -55,6 +57,11 @@ public class AllEventHandler {
                         results.city + ", State = " + results.state + ", Country = " + results.country);
                 try {
                     fetchData.fetch(results.city, results.state, results.country);
+                    for(int i = 0; i < DrawNewPane.getAllPane().size(); i++){
+                        LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
+                    }
+                    LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
+                    LoadPane.loadWidget();
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid Place");
@@ -70,17 +77,15 @@ public class AllEventHandler {
         }
     }
 
-    public static void onDelete() {
+    public static void onDelete(Parent parent) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Confirmation");
         alert.setContentText("Do you really want to delete this?");
         alert.getButtonTypes().addAll(ButtonType.NO, ButtonType.YES);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            // ... user chose OK
-        } else {
-            // ... user chose CANCEL or closed the dialog
+        if (result.get() == ButtonType.YES) {
+            LoadPane.vBox.getChildren().removeAll(parent);
         }
     }
 
@@ -89,7 +94,6 @@ public class AllEventHandler {
     }
 
     private static class Results {
-
         String city, state, country;
 
         public Results(String city, String state, String country) {

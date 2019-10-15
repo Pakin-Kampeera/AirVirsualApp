@@ -7,15 +7,17 @@ import AirVirsual.Controller.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
 public class LoadPane {
-    private DrawButtonPane buttonPane = new DrawButtonPane();
+    private static DrawButtonPane buttonPane = new DrawButtonPane();
     private FetchData fetchData = new FetchData();
-    public AnchorPane anchorPane;
-    public VBox vBox;
+    private static Pane buttonAreaPane = new Pane();
+    public static AnchorPane anchorPane;
+    public static VBox vBox;
 
     public void initialLoadPane() throws IOException {
         Main.scrollPane = new ScrollPane();
@@ -35,22 +37,26 @@ public class LoadPane {
 
         startToFetch();
         loadWidget();
+
+        anchorPane.getChildren().add(vBox);
+        Main.scrollPane.setContent(anchorPane);
     }
 
-    public void loadWidget() {
+    public static void loadWidget() {
         for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
             vBox.getChildren().add(DrawNewPane.getAllPane().get(i));
         }
-        anchorPane.getChildren().add(vBox);
-        vBox.getChildren().add(buttonPane.createButtonPane());
-        Main.scrollPane.setContent(anchorPane);
+        buttonAreaPane = buttonPane.createButtonPane();
+        vBox.getChildren().add(buttonAreaPane);
     }
-    
+
     public void startToFetch() throws IOException {
         fetchData.fetch("Bangkok", "Bangkok", "Thailand");
         fetchData.fetch("Phuket", "Phuket", "Thailand");
         fetchData.fetch("Chiang Mai", "Chiang Mai", "Thailand");
     }
 
-
+    public static Pane getButtonAreaPane() {
+        return buttonAreaPane;
+    }
 }
