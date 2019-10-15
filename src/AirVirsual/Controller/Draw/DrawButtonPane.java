@@ -4,6 +4,8 @@ import AirVirsual.Controller.AllEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
+
 public class DrawButtonPane {
     private Pane subPane;
     private Button button1, button2;
@@ -36,7 +38,11 @@ public class DrawButtonPane {
 
         //Refresh click
         button2.setOnAction(actionEvent -> {
-            AllEventHandler.onRefresh();
+            try {
+                AllEventHandler.onRefresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         subPane.getChildren().addAll(button1, button2);

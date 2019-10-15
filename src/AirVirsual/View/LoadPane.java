@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class LoadPane {
     private static DrawButtonPane buttonPane = new DrawButtonPane();
-    private FetchData fetchData = new FetchData();
+    private static FetchData fetchData = new FetchData();
     private static Pane buttonAreaPane = new Pane();
     public static AnchorPane anchorPane;
     public static VBox vBox;
@@ -50,7 +50,7 @@ public class LoadPane {
         vBox.getChildren().add(buttonAreaPane);
     }
 
-    public void startToFetch() throws IOException {
+    public static void startToFetch() throws IOException {
         fetchData.fetch("Bangkok", "Bangkok", "Thailand");
         fetchData.fetch("Phuket", "Phuket", "Thailand");
         fetchData.fetch("Chiang Mai", "Chiang Mai", "Thailand");

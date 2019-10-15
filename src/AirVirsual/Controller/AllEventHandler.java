@@ -7,6 +7,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+
+import java.io.IOException;
 import java.util.Optional;
 
 public class AllEventHandler {
@@ -89,11 +91,13 @@ public class AllEventHandler {
         }
     }
 
-    public static void onRefresh() {
+    public static void onRefresh() throws IOException {
         for(int i = 0; i < DrawNewPane.getAllPane().size(); i++){
             LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
         }
         LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
+        DrawNewPane.getAllPane().clear();
+        LoadPane.startToFetch();
         LoadPane.loadWidget();
     }
 
