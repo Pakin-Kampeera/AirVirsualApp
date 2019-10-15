@@ -38,11 +38,7 @@ public class DrawButtonPane {
 
         //Refresh click
         button2.setOnAction(actionEvent -> {
-            try {
-                AllEventHandler.onRefresh();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            AllEventHandler.onRefresh();
         });
 
         subPane.getChildren().addAll(button1, button2);

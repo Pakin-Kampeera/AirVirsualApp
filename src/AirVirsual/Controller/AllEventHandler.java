@@ -59,7 +59,7 @@ public class AllEventHandler {
                         results.city + ", State = " + results.state + ", Country = " + results.country);
                 try {
                     fetchData.fetch(results.city, results.state, results.country);
-                    for(int i = 0; i < DrawNewPane.getAllPane().size(); i++){
+                    for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
                         LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
                     }
                     LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
@@ -88,16 +88,15 @@ public class AllEventHandler {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES) {
             LoadPane.vBox.getChildren().removeAll(parent);
+            DrawNewPane.getAllPane().remove(parent);
         }
     }
 
-    public static void onRefresh() throws IOException {
-        for(int i = 0; i < DrawNewPane.getAllPane().size(); i++){
+    public static void onRefresh() {
+        for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
             LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
         }
         LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
-        DrawNewPane.getAllPane().clear();
-        LoadPane.startToFetch();
         LoadPane.loadWidget();
     }
 
