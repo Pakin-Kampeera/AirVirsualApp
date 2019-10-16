@@ -6,10 +6,15 @@ import AirVisual.Controller.Draw.DrawNewPane;
 import AirVisual.Model.FetchData;
 import AirVisual.Controller.Main;
 import javafx.geometry.Pos;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -20,21 +25,13 @@ public class LoadPane {
     private static AnchorPane anchorPane;
     private static ScrollPane scrollPane;
     private static ImageView search, logo, notification, menu;
+    private static Label badge;
     public static VBox vBox;
 
-    public void initialLoadPane() throws IOException, ParseException {
-        loadHeader();
-        startToFetch();
-        loadWidget();
-        loadButton();
-    }
-
-    public void loadHeader(){
+    public void loadHeader() {
         buttonAreaPane = new Pane();
         fetchData = new FetchData();
         buttonPane = new DrawButtonPane();
-
-        Main.borderPane = new BorderPane();
 
         top = new Pane();
         top.setPrefHeight(49);
@@ -77,6 +74,17 @@ public class LoadPane {
         menu.setPickOnBounds(true);
         menu.setPreserveRatio(true);
 
+        badge = new Label("20");
+        badge.setLayoutX(243);
+        badge.setLayoutY(11);
+        badge.setPrefWidth(18);
+        badge.setPrefHeight(18);
+        badge.setAlignment(Pos.CENTER);
+        badge.setContentDisplay(ContentDisplay.CENTER);
+        badge.setStyle("-fx-background-color: red; -fx-background-radius: 20 20 20 20");
+        badge.setTextFill(Color.WHITE);
+        badge.setFont(new Font(10));
+
         scrollPane = new ScrollPane();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -91,30 +99,48 @@ public class LoadPane {
         vBox.setPrefWidth(309);
     }
 
-    public static void loadButton(){
+    public void loadWidget() {
+        for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
+            vBox.getChildren().add(DrawNewPane.getAllPane().get(i));
+        }
+        System.out.println(DrawNewPane.getAllPane());
+        buttonAreaPane = buttonPane.createButtonPane();
+
+        vBox.getChildren().add(buttonAreaPane);
+    }
+
+    public void loadButton() {
+
         anchorPane.getChildren().add(vBox);
+
         scrollPane.setContent(anchorPane);
-        top.getChildren().addAll(search, logo, notification, menu);
+
+        top.getChildren().addAll(search, logo, notification, menu, badge);
+
+        Main.borderPane = new BorderPane();
+
         Main.borderPane.setCenter(scrollPane);
         Main.borderPane.setTop(top);
         Main.borderPane.setBottom(bottom);
     }
 
-    public static void loadWidget() {
-        for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
-            vBox.getChildren().add(DrawNewPane.getAllPane().get(i));
-        }
-        buttonAreaPane = buttonPane.createButtonPane();
-        vBox.getChildren().add(buttonAreaPane);
-    }
-
-    private static void startToFetch() throws IOException, ParseException {
-        fetchData.fetch("Bangkok", "Bangkok", "Thailand");
-        fetchData.fetch("Phuket", "Phuket", "Thailand");
-        fetchData.fetch("Chiang Mai", "Chiang Mai", "Thailand");
+    public void startToFetch(String city, String state, String country) throws IOException, ParseException {
+        fetchData.fetch(city, state, country);
     }
 
     public static Pane getButtonAreaPane() {
         return buttonAreaPane;
+    }
+
+    public static ScrollPane getScrollPane() {
+        return scrollPane;
+    }
+
+    public static Pane getTop() {
+        return top;
+    }
+
+    public static Label getBadge() {
+        return badge;
     }
 }

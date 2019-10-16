@@ -26,7 +26,12 @@ public class Main extends Application {
 
     private void initMainPane() throws IOException, ParseException {
         loadPane = new LoadPane();
-        loadPane.initialLoadPane();
+        loadPane.loadHeader();
+        loadPane.startToFetch("Bangkok", "Bangkok", "Thailand");
+        loadPane.startToFetch("Phuket", "Phuket", "Thailand");
+        loadPane.startToFetch("Chiang Mai", "Chiang Mai", "Thailand");
+        loadPane.loadWidget();
+        loadPane.loadButton();
     }
 
     public static void main(String[] args) {

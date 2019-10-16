@@ -10,8 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Optional;
 
 public class AllEventHandler {
@@ -68,7 +66,7 @@ public class AllEventHandler {
                         LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
                     }
                     LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
-                    LoadPane.loadWidget();
+                    loadPane.loadWidget();
                 } catch (Exception e) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid Place");
@@ -90,24 +88,26 @@ public class AllEventHandler {
         alert.setContentText("Do you really want to delete this?");
         alert.getButtonTypes().addAll(ButtonType.NO, ButtonType.YES);
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent()) {
-            LoadPane.vBox.getChildren().removeAll(parent);
-            DrawNewPane.getAllPane().remove(parent);
-        }
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                LoadPane.vBox.getChildren().removeAll(parent);
+                DrawNewPane.getAllPane().remove(parent);
+                System.out.println(DrawNewPane.getAllPane());
+            }
+        });
     }
 
     public static void onNotification() {
-        Main.borderPane.getChildren().removeAll(Main.borderPane.getCenter(), Main.borderPane.getTop());
         notication.notificatonPage();
     }
 
     public static void onBack() {
-
+        Main.borderPane.setTop(LoadPane.getTop());
+        Main.borderPane.setCenter(LoadPane.getScrollPane());
     }
 
     public static void onRefresh() {
-        Main.borderPane.getChildren().removeAll(Main.borderPane.getCenter(), Main.borderPane.getTop());
+        Main.borderPane.setCenter(LoadPane.getScrollPane());
     }
 
     private static class Results {
