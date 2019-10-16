@@ -5,9 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 
-import java.io.IOException;
-import java.text.ParseException;
-
 public class DrawButtonPane {
     private Pane subPane;
     private Button button1, button2;
@@ -29,8 +26,8 @@ public class DrawButtonPane {
 
         //Add place click
         button1.setOnAction(event -> AllEventHandler.onAdd());
-        button1.setOnMousePressed(event -> button1.setTextFill(Paint.valueOf("#303030")));
-        button1.setOnMouseReleased(event -> button1.setTextFill(Paint.valueOf("#4E8ABE")));
+        button1.setOnMouseEntered(event -> button1.setTextFill(Paint.valueOf("#303030")));
+        button1.setOnMouseExited(event -> button1.setTextFill(Paint.valueOf("#4E8ABE")));
 
         button2 = new Button("REFRESH");
         button2.setLayoutX(159);
@@ -45,8 +42,8 @@ public class DrawButtonPane {
         //Refresh click
         button2.setOnAction(event -> AllEventHandler.onRefresh());
 
-        button2.setOnMousePressed(event -> button2.setTextFill(Paint.valueOf("#303030")));
-        button2.setOnMouseReleased(event -> button2.setTextFill(Paint.valueOf("#4E8ABE")));
+        button2.setOnMouseEntered(event -> button2.setTextFill(Paint.valueOf("#303030")));
+        button2.setOnMouseExited(event -> button2.setTextFill(Paint.valueOf("#4E8ABE")));
 
         subPane.getChildren().addAll(button1, button2);
 

@@ -34,9 +34,9 @@ public class Notication {
             LoadPane.getBadge().setText("");
         });
 
-        clear.setOnMousePressed(event -> clear.setTextFill(Paint.valueOf("#A8A5A5")));
+        clear.setOnMouseEntered(event -> clear.setTextFill(Paint.valueOf("#A8A5A5")));
 
-        clear.setOnMouseReleased(event -> clear.setTextFill(Paint.valueOf("#000000")));
+        clear.setOnMouseExited(event -> clear.setTextFill(Paint.valueOf("#000000")));
 
         back = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/back.png")));
         back.setFitHeight(18);

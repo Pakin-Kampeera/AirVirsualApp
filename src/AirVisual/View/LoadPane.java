@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
@@ -25,7 +26,8 @@ public class LoadPane {
     private static AnchorPane anchorPane;
     private static ScrollPane scrollPane;
     private static ImageView search, logo, notification, menu;
-    private static Label badge;
+    private static Label badge, text;
+    private static ImageView air, earth, user, list, cart;
     public static VBox vBox;
 
     public void loadHeader() {
@@ -36,6 +38,42 @@ public class LoadPane {
         top = new Pane();
         top.setPrefHeight(49);
         top.setPrefWidth(311);
+
+        text = new Label("My Air");
+        text.setLayoutX(23);
+        text.setLayoutY(35);
+        text.setFont(new Font(10));
+        text.setTextFill(Paint.valueOf("#48739A"));
+
+        air = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/bottom/chat.png")));
+        air.setFitHeight(30);
+        air.setFitWidth(30);
+        air.setLayoutX(22);
+        air.setLayoutY(5);
+
+        earth = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/bottom/world.png")));
+        earth.setFitHeight(30);
+        earth.setFitWidth(30);
+        earth.setLayoutX(78);
+        earth.setLayoutY(5);
+
+        user = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/bottom/user.png")));
+        user.setFitHeight(40);
+        user.setFitWidth(40);
+        user.setLayoutX(136);
+        user.setLayoutY(5);
+
+        list = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/bottom/list.png")));
+        list.setFitHeight(30);
+        list.setFitWidth(30);
+        list.setLayoutX(201);
+        list.setLayoutY(5);
+
+        cart = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/bottom/cart.png")));
+        cart.setFitHeight(30);
+        cart.setFitWidth(30);
+        cart.setLayoutX(254);
+        cart.setLayoutY(5);
 
         bottom = new Pane();
         bottom.setPrefHeight(49);
@@ -116,6 +154,8 @@ public class LoadPane {
         scrollPane.setContent(anchorPane);
 
         top.getChildren().addAll(search, logo, notification, menu, badge);
+
+        bottom.getChildren().addAll(air, earth, user, list, cart, text);
 
         Main.borderPane = new BorderPane();
 
