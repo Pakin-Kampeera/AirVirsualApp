@@ -67,7 +67,7 @@ public class AllEventHandler {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("Invalid Place");
                     alert.setHeaderText(null);
-                    alert.setContentText(String.format("%s, %s, %s is invalid!", results.city.substring(0, 1).toUpperCase() + results.city.substring(1), results.state.substring(0, 1).toUpperCase() + results.state.substring(1), results.country.substring(0, 1).toUpperCase() + results.country.substring(1)));
+                    alert.setContentText("This place not exist!");
                     alert.showAndWait();
                     onAdd();
                     e.printStackTrace();

@@ -31,17 +31,18 @@ public class DrawNewPane {
         flowPane.setLayoutY(17);
         flowPane.setPrefHeight(177);
         flowPane.setPrefWidth(277);
-        flowPane.setStyle("-fx-background-radius: 10 10 10 10;-fx-background-color: lightgrey");
+        flowPane.setAlignment(Pos.BOTTOM_CENTER);
+        flowPane.setStyle("-fx-background-radius: 7 7 7 7;-fx-background-color: lightgrey");
 
         Pane leftPane = new Pane();
         leftPane.prefHeight(200);
         leftPane.setPrefWidth(120);
-        leftPane.setStyle("-fx-background-color: #" + obj.getDownColor() + "; -fx-background-radius: 10 0 0 10");
+        leftPane.setStyle("-fx-background-color: #" + obj.getDownColor() + "; -fx-background-radius: 7 0 0 7");
 
         Pane innerPane = new Pane();
         innerPane.prefHeight(34);
         innerPane.setPrefWidth(120);
-        innerPane.setStyle("-fx-background-color: #" + obj.getHeadColor() + "; -fx-background-radius: 10 0 0 0");
+        innerPane.setStyle("-fx-background-color: #" + obj.getHeadColor() + "; -fx-background-radius: 7 0 0 0");
 
         Label temp = new Label(obj.getWeather());
         temp.setLayoutX(80);
@@ -121,7 +122,7 @@ public class DrawNewPane {
         Pane rightPane = new Pane();
         rightPane.setPrefHeight(200);
         rightPane.setPrefWidth(157);
-        rightPane.setStyle("-fx-background-color: white; -fx-background-radius: 0 10 10 0");
+        rightPane.setStyle("-fx-background-color: white; -fx-background-radius: 0 7 7 0");
 
         Label mainLocation = new Label(obj.getMainLocation());
         mainLocation.setLayoutX(8);
