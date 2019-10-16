@@ -1,4 +1,4 @@
-package AirVisual.Controller;
+package AirVisual.Model;
 
 import org.json.JSONArray;
 
@@ -19,7 +19,7 @@ public class Forecast {
         this.min_temp = new ArrayList<>();
         this.max_temp = new ArrayList<>();
         this.icon = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 40; i++) {
             if (data.getJSONObject(i).getString("dt_txt").split(" ")[1].equals("12:00:00")) {
                 this.day.add(convertDate(data.getJSONObject(i).getString("dt_txt").split(" ")[0]));
                 this.min_temp.add(data.getJSONObject(i).getJSONObject("main").getInt("temp_min") / 10 + "°");

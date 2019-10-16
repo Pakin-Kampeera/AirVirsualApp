@@ -1,8 +1,9 @@
 package AirVisual.View;
 
+import AirVisual.Controller.AllEventHandler;
 import AirVisual.Controller.Draw.DrawButtonPane;
 import AirVisual.Controller.Draw.DrawNewPane;
-import AirVisual.Controller.FetchData;
+import AirVisual.Model.FetchData;
 import AirVisual.Controller.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
@@ -22,6 +23,13 @@ public class LoadPane {
     public static VBox vBox;
 
     public void initialLoadPane() throws IOException, ParseException {
+        loadHeader();
+        startToFetch();
+        loadWidget();
+        loadButton();
+    }
+
+    public void loadHeader(){
         buttonAreaPane = new Pane();
         fetchData = new FetchData();
         buttonPane = new DrawButtonPane();
@@ -59,6 +67,7 @@ public class LoadPane {
         notification.setLayoutY(17);
         notification.setPickOnBounds(true);
         notification.setPreserveRatio(true);
+        notification.setOnMouseClicked(event -> AllEventHandler.onNotification());
 
         menu = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/menu.png")));
         menu.setFitHeight(23);
@@ -80,10 +89,9 @@ public class LoadPane {
         vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setPrefWidth(309);
+    }
 
-        startToFetch();
-        loadWidget();
-
+    public static void loadButton(){
         anchorPane.getChildren().add(vBox);
         scrollPane.setContent(anchorPane);
         top.getChildren().addAll(search, logo, notification, menu);

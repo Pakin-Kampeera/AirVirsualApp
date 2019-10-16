@@ -1,8 +1,8 @@
 package AirVisual.Controller.Draw;
 
 import AirVisual.Controller.AllEventHandler;
-import AirVisual.Controller.AqiData;
-import AirVisual.Controller.Forecast;
+import AirVisual.Model.AqiData;
+import AirVisual.Model.Forecast;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;

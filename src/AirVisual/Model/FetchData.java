@@ -1,4 +1,4 @@
-package AirVisual.Controller;
+package AirVisual.Model;
 
 import AirVisual.Controller.Draw.DrawNewPane;
 import org.json.JSONArray;
@@ -44,7 +44,7 @@ public class FetchData {
         String state1 = state.replaceAll(" ", "%20");
         String country1 = country.replaceAll(" ", "%20");
 
-        data1 = readJsonFromUrl(String.format("http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=cad42f09-3279-438d-837b-c22424fccedd", city1, state1, country1));
+        data1 = readJsonFromUrl(String.format("http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=2832f5a5-e637-44ac-9eb5-856644f44cd9", city1, state1, country1));
         String lat = data1.getJSONObject("data").getJSONObject("location").getJSONArray("coordinates").get(1).toString();
         String lon = data1.getJSONObject("data").getJSONObject("location").getJSONArray("coordinates").get(0).toString();
         data2 = readJsonFromUrl(String.format(String.format("http://api.openweathermap.org/data/2.5/forecast?lat=%s&lon=%s&appid=5f3ea741bfea7efee74331a0812a15c5", lat, lon)));

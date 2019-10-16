@@ -1,17 +1,23 @@
 package AirVisual.Controller;
 
 import AirVisual.Controller.Draw.DrawNewPane;
+import AirVisual.Model.FetchData;
 import AirVisual.View.LoadPane;
+import AirVisual.View.Notication;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Optional;
 
 public class AllEventHandler {
     private static FetchData fetchData = new FetchData();
+    private static Notication notication = new Notication();
+    private static LoadPane loadPane = new LoadPane();
 
     public static void onAdd() {
         try {
@@ -91,12 +97,17 @@ public class AllEventHandler {
         }
     }
 
+    public static void onNotification() {
+        Main.borderPane.getChildren().removeAll(Main.borderPane.getCenter(), Main.borderPane.getTop());
+        notication.notificatonPage();
+    }
+
+    public static void onBack() {
+
+    }
+
     public static void onRefresh() {
-        for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
-            LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
-        }
-        LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
-        LoadPane.loadWidget();
+        Main.borderPane.getChildren().removeAll(Main.borderPane.getCenter(), Main.borderPane.getTop());
     }
 
     private static class Results {

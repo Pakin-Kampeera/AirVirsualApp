@@ -1,6 +1,6 @@
 package AirVisual.Controller.Draw;
 
-import AirVisual.Controller.Forecast;
+import AirVisual.Model.Forecast;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 

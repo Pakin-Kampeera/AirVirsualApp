@@ -1,4 +1,4 @@
-package AirVisual.Controller;
+package AirVisual.Model;
 
 import org.json.JSONObject;
 
