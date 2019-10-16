@@ -1,9 +1,9 @@
-package AirVirsual.View;
+package AirVisual.View;
 
-import AirVirsual.Controller.Draw.DrawButtonPane;
-import AirVirsual.Controller.Draw.DrawNewPane;
-import AirVirsual.Controller.FetchData;
-import AirVirsual.Controller.Main;
+import AirVisual.Controller.Draw.DrawButtonPane;
+import AirVisual.Controller.Draw.DrawNewPane;
+import AirVisual.Controller.FetchData;
+import AirVisual.Controller.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class LoadPane {
     private static DrawButtonPane buttonPane;
     private static FetchData fetchData;
-    private static Pane buttonAreaPane, top;
+    private static Pane buttonAreaPane, top, bottom;
     private static AnchorPane anchorPane;
     private static ScrollPane scrollPane;
     private static ImageView search, logo, notification, menu;
@@ -31,7 +31,11 @@ public class LoadPane {
         top.setPrefHeight(49);
         top.setPrefWidth(311);
 
-        search = new ImageView(new Image(getClass().getResourceAsStream("/AirVirsual/assets/header/search.png")));
+        bottom = new Pane();
+        bottom.setPrefHeight(49);
+        bottom.setPrefWidth(311);
+
+        search = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/search.png")));
         search.setFitHeight(20);
         search.setFitWidth(20);
         search.setLayoutX(18);
@@ -39,7 +43,7 @@ public class LoadPane {
         search.setPickOnBounds(true);
         search.setPreserveRatio(true);
 
-        logo = new ImageView(new Image(getClass().getResourceAsStream("/AirVirsual/assets/header/logo.png")));
+        logo = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/logo.png")));
         logo.setFitHeight(39);
         logo.setFitWidth(93);
         logo.setLayoutX(109);
@@ -47,7 +51,7 @@ public class LoadPane {
         logo.setPickOnBounds(true);
         logo.setPreserveRatio(true);
 
-        notification = new ImageView(new Image(getClass().getResourceAsStream("/AirVirsual/assets/header/notification.png")));
+        notification = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/notification.png")));
         notification.setFitHeight(23);
         notification.setFitWidth(23);
         notification.setLayoutX(230);
@@ -55,7 +59,7 @@ public class LoadPane {
         notification.setPickOnBounds(true);
         notification.setPreserveRatio(true);
 
-        menu = new ImageView(new Image(getClass().getResourceAsStream("/AirVirsual/assets/header/menu.png")));
+        menu = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/menu.png")));
         menu.setFitHeight(23);
         menu.setFitWidth(23);
         menu.setLayoutX(270);
@@ -66,7 +70,7 @@ public class LoadPane {
         scrollPane = new ScrollPane();
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setPrefHeight(500);
+        scrollPane.setPrefHeight(470);
         scrollPane.setPrefWidth(311);
 
         anchorPane = new AnchorPane();
@@ -84,6 +88,7 @@ public class LoadPane {
         top.getChildren().addAll(search, logo, notification, menu);
         Main.borderPane.setCenter(scrollPane);
         Main.borderPane.setTop(top);
+        Main.borderPane.setBottom(bottom);
     }
 
     public static void loadWidget() {

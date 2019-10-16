@@ -1,6 +1,6 @@
-package AirVirsual.Controller;
+package AirVisual.Controller;
 
-import AirVirsual.Controller.Draw.DrawNewPane;
+import AirVisual.Controller.Draw.DrawNewPane;
 import org.json.JSONException;
 import org.json.JSONObject;
 

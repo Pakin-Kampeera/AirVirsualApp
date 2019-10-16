@@ -1,6 +1,6 @@
-package AirVirsual.Controller;
+package AirVisual.Controller;
 
-import AirVirsual.View.LoadPane;
+import AirVisual.View.LoadPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -15,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setTitle("AirVirsual");
+        primaryStage.setTitle("AirVisual");
         initMainPane();
         mainScene = new Scene(borderPane);
         primaryStage.setScene(mainScene);

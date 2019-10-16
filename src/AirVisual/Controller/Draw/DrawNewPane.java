@@ -1,7 +1,7 @@
-package AirVirsual.Controller.Draw;
+package AirVisual.Controller.Draw;
 
-import AirVirsual.Controller.AllEventHandler;
-import AirVirsual.Controller.Obj;
+import AirVisual.Controller.AllEventHandler;
+import AirVisual.Controller.Obj;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -52,7 +52,7 @@ public class DrawNewPane {
         temp.setTextFill(Color.WHITE);
         temp.setFont(new Font(18));
 
-        Image image1 = new Image(getClass().getResourceAsStream(String.format("/AirVirsual/assets/weather/%s", obj.getIcon())));
+        Image image1 = new Image(getClass().getResourceAsStream(String.format("/AirVisual/assets/weather/%s", obj.getIcon())));
         ImageView icon = new ImageView(image1);
         icon.setFitHeight(26);
         icon.setFitWidth(27);
@@ -88,7 +88,7 @@ public class DrawNewPane {
         quality.setTextAlignment(TextAlignment.CENTER);
         quality.setFont(new Font(18));
 
-        Image image2 = new Image(getClass().getResourceAsStream(String.format("/AirVirsual/assets/face/%s", obj.getFace())));
+        Image image2 = new Image(getClass().getResourceAsStream(String.format("/AirVisual/assets/face/%s", obj.getFace())));
         ImageView face = new ImageView(image2);
         face.setFitHeight(65);
         face.setFitWidth(65);
@@ -97,7 +97,7 @@ public class DrawNewPane {
         face.setPickOnBounds(true);
         face.setPreserveRatio(true);
 
-        Image image3 = new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png"));
+        Image image3 = new Image(getClass().getResourceAsStream("/AirVisual/assets/clear/delete.png"));
         ImageView trash = new ImageView(image3);
         trash.setFitHeight(15);
         trash.setFitWidth(15);
@@ -114,10 +114,10 @@ public class DrawNewPane {
         });
 
         //Trash mouse over
-        trash.setOnMouseEntered(event -> trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/clear.png"))));
+        trash.setOnMouseEntered(event -> trash.setImage(new Image(getClass().getResourceAsStream("/AirVisual/assets/clear/clear.png"))));
 
         //Trash mouse exit
-        trash.setOnMouseExited(event -> trash.setImage(new Image(getClass().getResourceAsStream("/AirVirsual/assets/clear/delete.png"))));
+        trash.setOnMouseExited(event -> trash.setImage(new Image(getClass().getResourceAsStream("/AirVisual/assets/clear/delete.png"))));
 
         Pane rightPane = new Pane();
         rightPane.setPrefHeight(200);

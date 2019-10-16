@@ -1,7 +1,7 @@
-package AirVirsual.Controller;
+package AirVisual.Controller;
 
-import AirVirsual.Controller.Draw.DrawNewPane;
-import AirVirsual.View.LoadPane;
+import AirVisual.Controller.Draw.DrawNewPane;
+import AirVisual.View.LoadPane;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;

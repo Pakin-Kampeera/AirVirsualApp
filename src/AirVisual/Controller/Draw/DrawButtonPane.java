@@ -1,6 +1,6 @@
-package AirVirsual.Controller.Draw;
+package AirVisual.Controller.Draw;
 
-import AirVirsual.Controller.AllEventHandler;
+import AirVisual.Controller.AllEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
