@@ -2,7 +2,7 @@ package AirVisual.Controller;
 
 import org.json.JSONObject;
 
-public class Obj {
+public class AqiData {
     private int aqi;
     private String downColor;
     private String quality;

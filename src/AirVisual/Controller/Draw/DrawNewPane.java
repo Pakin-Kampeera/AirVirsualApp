@@ -1,7 +1,8 @@
 package AirVisual.Controller.Draw;
 
 import AirVisual.Controller.AllEventHandler;
-import AirVisual.Controller.Obj;
+import AirVisual.Controller.AqiData;
+import AirVisual.Controller.Forecast;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -20,8 +21,9 @@ import java.util.ArrayList;
 
 public class DrawNewPane {
     private static ArrayList<Node> allPane = new ArrayList<>();
+    private DrawForecastTemp drawForecastTemp = new DrawForecastTemp();
 
-    public void createNewPane(Obj obj) {
+    public void createNewPane(AqiData aqiData, Forecast forecast) {
         Pane mainPane = new Pane();
         mainPane.setPrefHeight(219);
         mainPane.setPrefWidth(312);
@@ -37,14 +39,14 @@ public class DrawNewPane {
         Pane leftPane = new Pane();
         leftPane.prefHeight(200);
         leftPane.setPrefWidth(120);
-        leftPane.setStyle("-fx-background-color: #" + obj.getDownColor() + "; -fx-background-radius: 7 0 0 7");
+        leftPane.setStyle("-fx-background-color: #" + aqiData.getDownColor() + "; -fx-background-radius: 7 0 0 7");
 
         Pane innerPane = new Pane();
         innerPane.prefHeight(34);
         innerPane.setPrefWidth(120);
-        innerPane.setStyle("-fx-background-color: #" + obj.getHeadColor() + "; -fx-background-radius: 7 0 0 0");
+        innerPane.setStyle("-fx-background-color: #" + aqiData.getHeadColor() + "; -fx-background-radius: 7 0 0 0");
 
-        Label temp = new Label(obj.getWeather());
+        Label temp = new Label(aqiData.getWeather());
         temp.setLayoutX(80);
         temp.setLayoutY(6);
         temp.setPrefHeight(23);
@@ -52,7 +54,7 @@ public class DrawNewPane {
         temp.setTextFill(Color.WHITE);
         temp.setFont(new Font(18));
 
-        Image image1 = new Image(getClass().getResourceAsStream(String.format("/AirVisual/assets/weather/%s", obj.getIcon())));
+        Image image1 = new Image(getClass().getResourceAsStream(String.format("/AirVisual/assets/weather/%s", aqiData.getIcon())));
         ImageView icon = new ImageView(image1);
         icon.setFitHeight(26);
         icon.setFitWidth(27);
@@ -70,7 +72,7 @@ public class DrawNewPane {
         unit.setTextAlignment(TextAlignment.CENTER);
         unit.setFont(new Font(10));
 
-        Label aqi = new Label(Integer.toString(obj.getAqi()));
+        Label aqi = new Label(Integer.toString(aqiData.getAqi()));
         aqi.setAlignment(Pos.CENTER);
         aqi.setContentDisplay(ContentDisplay.CENTER);
         aqi.setLayoutY(136);
@@ -79,7 +81,7 @@ public class DrawNewPane {
         aqi.setTextAlignment(TextAlignment.CENTER);
         aqi.setFont(new Font(36));
 
-        Label quality = new Label(obj.getQuality());
+        Label quality = new Label(aqiData.getQuality());
         quality.setAlignment(Pos.CENTER);
         quality.setContentDisplay(ContentDisplay.CENTER);
         quality.setLayoutY(34);
@@ -88,7 +90,7 @@ public class DrawNewPane {
         quality.setTextAlignment(TextAlignment.CENTER);
         quality.setFont(new Font(18));
 
-        Image image2 = new Image(getClass().getResourceAsStream(String.format("/AirVisual/assets/face/%s", obj.getFace())));
+        Image image2 = new Image(getClass().getResourceAsStream(String.format("/AirVisual/assets/face/%s", aqiData.getFace())));
         ImageView face = new ImageView(image2);
         face.setFitHeight(65);
         face.setFitWidth(65);
@@ -124,21 +126,23 @@ public class DrawNewPane {
         rightPane.setPrefWidth(157);
         rightPane.setStyle("-fx-background-color: white; -fx-background-radius: 0 7 7 0");
 
-        Label mainLocation = new Label(obj.getMainLocation());
+        Label mainLocation = new Label(aqiData.getMainLocation());
         mainLocation.setLayoutX(8);
         mainLocation.setLayoutY(5);
         mainLocation.setPrefHeight(17);
         mainLocation.setPrefWidth(143);
         mainLocation.setFont(new Font(18));
 
-        Label subLocation = new Label(obj.getLocation());
+        Label subLocation = new Label(aqiData.getLocation());
         subLocation.setLayoutX(8);
         subLocation.setLayoutY(27);
         subLocation.setPrefHeight(17);
         subLocation.setPrefWidth(132);
         subLocation.setTextFill(Paint.valueOf("#7d90a8"));
 
-        rightPane.getChildren().addAll(mainLocation, subLocation, trash);
+        drawForecastTemp.createNewForecast(forecast);
+
+        rightPane.getChildren().addAll(mainLocation, subLocation, trash, drawForecastTemp.getForecastPane());
 
         innerPane.getChildren().addAll(icon, temp);
 

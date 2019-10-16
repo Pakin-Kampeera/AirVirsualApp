@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class LoadPane {
     private static DrawButtonPane buttonPane;
@@ -20,7 +21,7 @@ public class LoadPane {
     private static ImageView search, logo, notification, menu;
     public static VBox vBox;
 
-    public void initialLoadPane() throws IOException {
+    public void initialLoadPane() throws IOException, ParseException {
         buttonAreaPane = new Pane();
         fetchData = new FetchData();
         buttonPane = new DrawButtonPane();
@@ -99,7 +100,7 @@ public class LoadPane {
         vBox.getChildren().add(buttonAreaPane);
     }
 
-    private static void startToFetch() throws IOException {
+    private static void startToFetch() throws IOException, ParseException {
         fetchData.fetch("Bangkok", "Bangkok", "Thailand");
         fetchData.fetch("Phuket", "Phuket", "Thailand");
         fetchData.fetch("Chiang Mai", "Chiang Mai", "Thailand");

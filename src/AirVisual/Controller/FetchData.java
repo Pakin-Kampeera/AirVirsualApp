@@ -1,17 +1,23 @@
 package AirVisual.Controller;
 
+import AirVisual.Controller.Draw.DrawForecastTemp;
 import AirVisual.Controller.Draw.DrawNewPane;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
 
 public class FetchData {
-    private JSONObject object = new JSONObject();
-    private Obj obj = new Obj();
+    private JSONObject data1 = new JSONObject();
+    private JSONObject data2 = new JSONObject();
+    private AqiData aqiData = new AqiData();
     private DrawNewPane drawNewPane = new DrawNewPane();
+    private DrawForecastTemp drawForecastTemp = new DrawForecastTemp();
+    private Forecast forecast = new Forecast();
 
     private String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -34,16 +40,23 @@ public class FetchData {
         }
     }
 
-    public void fetch(String city, String state, String country) throws IOException {
+    public void fetch(String city, String state, String country) throws IOException, ParseException {
         String city1 = city.replaceAll(" ", "%20");
         String state1 = state.replaceAll(" ", "%20");
         String country1 = country.replaceAll(" ", "%20");
 
-        object = readJsonFromUrl(String.format("http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=cad42f09-3279-438d-837b-c22424fccedd", city1, state1, country1));
-        System.out.println(object.toString());
-        JSONObject data = object.getJSONObject("data");
+        data1 = readJsonFromUrl(String.format("http://api.airvisual.com/v2/city?city=%s&state=%s&country=%s&key=cad42f09-3279-438d-837b-c22424fccedd", city1, state1, country1));
+        System.out.println(data1.toString());
+        JSONObject aqi = data1.getJSONObject("data");
+        aqiData.createObj(aqi);
 
-        obj.createObj(data);
-        drawNewPane.createNewPane(obj);
+        String lat = data1.getJSONObject("data").getJSONObject("location").getJSONArray("coordinates").get(1).toString();
+        String lon = data1.getJSONObject("data").getJSONObject("location").getJSONArray("coordinates").get(0).toString();
+
+        data2 = readJsonFromUrl(String.format(String.format("http://api.openweathermap.org/data/2.5/forecast?lat=%s&lon=%s&appid=5f3ea741bfea7efee74331a0812a15c5", lat, lon)));
+        JSONArray list = data2.getJSONArray("list");
+        forecast.createObj(list);
+
+        drawNewPane.createNewPane(aqiData, forecast);
     }
 }

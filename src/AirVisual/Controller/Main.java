@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class Main extends Application {
     private static Scene mainScene;
@@ -14,7 +15,7 @@ public class Main extends Application {
     private LoadPane loadPane;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, ParseException {
         primaryStage.setTitle("AirVisual");
         initMainPane();
         mainScene = new Scene(borderPane);
@@ -23,7 +24,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    private void initMainPane() throws IOException {
+    private void initMainPane() throws IOException, ParseException {
         loadPane = new LoadPane();
         loadPane.initialLoadPane();
     }

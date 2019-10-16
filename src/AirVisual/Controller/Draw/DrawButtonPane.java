@@ -3,6 +3,7 @@ package AirVisual.Controller.Draw;
 import AirVisual.Controller.AllEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 
 public class DrawButtonPane {
     private Pane subPane;
@@ -13,24 +14,28 @@ public class DrawButtonPane {
         subPane.setPrefHeight(66);
         subPane.setPrefWidth(312);
 
-        button1 = new Button("Add Place");
+        button1 = new Button("ADD PLACE");
         button1.setLayoutX(16);
-        button1.setLayoutY(20);
+        button1.setLayoutY(16);
         button1.setMnemonicParsing(false);
-        button1.setPrefHeight(27);
+        button1.setPrefHeight(40);
         button1.setPrefWidth(131);
         button1.setFocusTraversable(false);
+        button1.setTextFill(Paint.valueOf("#4E8ABE"));
+        button1.setStyle("-fx-background-color: transparent; -fx-border-color: lightgrey; -fx-border-radius: 5 5 5 5;");
 
         //Add place click
         button1.setOnAction(event -> AllEventHandler.onAdd());
 
-        button2 = new Button("Refresh");
+        button2 = new Button("REFRESH");
         button2.setLayoutX(159);
-        button2.setLayoutY(20);
+        button2.setLayoutY(16);
         button2.setMnemonicParsing(false);
-        button2.setPrefHeight(27);
+        button2.setPrefHeight(40);
         button2.setPrefWidth(131);
         button2.setFocusTraversable(false);
+        button2.setTextFill(Paint.valueOf("#4E8ABE"));
+        button2.setStyle("-fx-background-color: transparent; -fx-border-color: lightgrey; -fx-border-radius: 5 5 5 5;");
 
         //Refresh click
         button2.setOnAction(event -> AllEventHandler.onRefresh());
