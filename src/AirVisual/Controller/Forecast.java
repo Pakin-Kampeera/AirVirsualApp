@@ -27,7 +27,7 @@ public class Forecast {
                 this.icon.add(data.getJSONObject(i).getJSONArray("weather").getJSONObject(0).getString("icon"));
             }
         }
-        System.out.println(day);
+        System.out.println("-----------------------");
     }
 
     private String convertDate(String date) throws ParseException {
@@ -35,7 +35,7 @@ public class Forecast {
         Date dt1 = format1.parse(date);
         DateFormat format2 = new SimpleDateFormat("EEEE");
         String finalDay = format2.format(dt1);
-        return finalDay.substring(0,3);
+        return finalDay.substring(0, 3);
     }
 
     public ArrayList<String> getDay() {

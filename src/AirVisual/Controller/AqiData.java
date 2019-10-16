@@ -34,7 +34,6 @@ public class AqiData {
         System.out.println(location);
         System.out.println(icon);
         System.out.println(face);
-        System.out.println("-----------------------");
     }
 
     private String airQuality(int aqi) {
