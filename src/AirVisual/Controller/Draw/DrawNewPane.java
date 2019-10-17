@@ -1,6 +1,7 @@
 package AirVisual.Controller.Draw;
 
 import AirVisual.Controller.AllEventHandler;
+import AirVisual.Controller.NotificateAlert;
 import AirVisual.Model.AqiData;
 import AirVisual.Model.Forecast;
 import javafx.geometry.Pos;
@@ -22,6 +23,10 @@ import java.util.ArrayList;
 public class DrawNewPane {
     private static ArrayList<Node> allPane = new ArrayList<>();
     private DrawForecastTemp drawForecastTemp = new DrawForecastTemp();
+    private static ArrayList<String> place = new ArrayList<>();
+    private static ArrayList<Integer> data = new ArrayList<>();
+    private NotificateAlert notificateAlert = new NotificateAlert();
+    private static ArrayList<String> notice = new ArrayList<>();
 
     public void createNewPane(AqiData aqiData, Forecast forecast) {
         Pane mainPane = new Pane();
@@ -131,13 +136,16 @@ public class DrawNewPane {
         mainLocation.setLayoutY(5);
         mainLocation.setPrefHeight(17);
         mainLocation.setPrefWidth(143);
+        mainLocation.setWrapText(true);
         mainLocation.setFont(new Font(18));
 
         Label subLocation = new Label(aqiData.getLocation());
         subLocation.setLayoutX(8);
         subLocation.setLayoutY(27);
-        subLocation.setPrefHeight(17);
+        subLocation.setPrefHeight(35);
         subLocation.setPrefWidth(132);
+        subLocation.setWrapText(true);
+        subLocation.setAlignment(Pos.TOP_LEFT);
         subLocation.setTextFill(Paint.valueOf("#7d90a8"));
 
         drawForecastTemp.createNewForecast(forecast);
@@ -154,10 +162,25 @@ public class DrawNewPane {
 
         allPane.add(mainPane);
 
-        System.out.println(allPane);
+        place.add(aqiData.getLocation());
+
+        data.add(aqiData.getAqi());
+
+
+//        System.out.println(allPane);
+//        System.out.println(place);
+//        System.out.println(notice);
     }
 
     public static ArrayList<Node> getAllPane() {
         return allPane;
+    }
+
+    public static ArrayList<String> getPlace() {
+        return place;
+    }
+
+    public static ArrayList<Integer> getData() {
+        return data;
     }
 }

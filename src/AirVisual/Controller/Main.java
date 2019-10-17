@@ -28,9 +28,10 @@ public class Main extends Application {
         loadPane = new LoadPane();
         loadPane.loadHeader();
         loadPane.startToFetch("Bangkok", "Bangkok", "Thailand");
-        loadPane.startToFetch("Phuket", "Phuket", "Thailand");
+        loadPane.startToFetch("brussels", "brussels capital", "belgium");
         loadPane.startToFetch("Chiang Mai", "Chiang Mai", "Thailand");
         loadPane.loadWidget();
+        loadPane.showNotification();
         loadPane.loadButton();
     }
 

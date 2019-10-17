@@ -3,6 +3,7 @@ package AirVisual.View;
 import AirVisual.Controller.AllEventHandler;
 import AirVisual.Controller.Draw.DrawButtonPane;
 import AirVisual.Controller.Draw.DrawNewPane;
+import AirVisual.Controller.NotificateAlert;
 import AirVisual.Model.FetchData;
 import AirVisual.Controller.Main;
 import javafx.geometry.Pos;
@@ -28,6 +29,7 @@ public class LoadPane {
     private static ImageView search, logo, notification, menu;
     private static Label badge, text;
     private static ImageView air, earth, user, list, cart;
+    private NotificateAlert notificateAlert = new NotificateAlert();
     public static VBox vBox;
 
     public void loadHeader() {
@@ -130,7 +132,7 @@ public class LoadPane {
         scrollPane.setPrefWidth(311);
 
         anchorPane = new AnchorPane();
-        anchorPane.setPrefWidth(311);
+        anchorPane.setPrefWidth(309);
 
         vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
@@ -142,6 +144,7 @@ public class LoadPane {
             vBox.getChildren().add(DrawNewPane.getAllPane().get(i));
         }
         System.out.println(DrawNewPane.getAllPane());
+
         buttonAreaPane = buttonPane.createButtonPane();
 
         vBox.getChildren().add(buttonAreaPane);
@@ -162,6 +165,12 @@ public class LoadPane {
         Main.borderPane.setCenter(scrollPane);
         Main.borderPane.setTop(top);
         Main.borderPane.setBottom(bottom);
+    }
+
+    public void showNotification() {
+        notificateAlert.show();
+        badge.setText(Integer.toString(notificateAlert.getCountBadge()));
+        badge.setStyle("-fx-background-color: red; -fx-background-radius: 20 20 20 20");
     }
 
     public void startToFetch(String city, String state, String country) throws IOException, ParseException {

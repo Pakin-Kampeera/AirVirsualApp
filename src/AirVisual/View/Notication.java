@@ -2,26 +2,33 @@ package AirVisual.View;
 
 import AirVisual.Controller.AllEventHandler;
 import AirVisual.Controller.Main;
+import AirVisual.Controller.NotificateAlert;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
 public class Notication {
-    private static Pane top, center;
+    private static Pane top;
     private static ImageView back;
-    private static Label text;
+    private static Label header;
     private static Button clear;
+    private static VBox data;
+    private static Pane pane;
+    private static Label text;
+    private static NotificateAlert notificateAlert = new NotificateAlert();
 
     public void notificatonPage() {
 
-        text = new Label("Notifications");
-        text.setLayoutX(108);
-        text.setLayoutY(17);
-        text.setFont(new Font(18));
+        header = new Label("Notifications");
+        header.setLayoutX(108);
+        header.setLayoutY(17);
+        header.setFont(new Font(18));
 
         clear = new Button("CLEAR");
         clear.setLayoutX(242);
@@ -32,6 +39,9 @@ public class Notication {
         clear.setOnMouseClicked(event -> {
             LoadPane.getBadge().setStyle("-fx-background-color: transparent");
             LoadPane.getBadge().setText("");
+
+            data.getChildren().removeAll(text);
+            text.setText("");
         });
 
         clear.setOnMouseEntered(event -> clear.setTextFill(Paint.valueOf("#A8A5A5")));
@@ -52,12 +62,26 @@ public class Notication {
         top.setPrefHeight(49);
         top.setPrefWidth(311);
 
-        center = new Pane();
-        center.setPrefHeight(200);
-        center.setPrefWidth(200);
+        pane = new Pane();
+        pane.setPrefHeight(402);
+        pane.setPrefWidth(501);
 
-        top.getChildren().addAll(back, text, clear);
+        text = new Label("Tokyo, Japan should avoid outdoor activity");
+        text.setAlignment(Pos.TOP_LEFT);
+        text.setPrefHeight(41);
+        text.setPrefWidth(278);
+        text.setWrapText(true);
+
+        data = new VBox();
+        data.setLayoutX(24);
+        data.setLayoutY(20);
+        data.setPrefHeight(408);
+        data.setPrefWidth(263);
+
+        top.getChildren().addAll(back, header, clear);
+        data.getChildren().addAll(text);
+        pane.getChildren().add(data);
         Main.borderPane.setTop(top);
-        Main.borderPane.setCenter(center);
+        Main.borderPane.setCenter(pane);
     }
 }
