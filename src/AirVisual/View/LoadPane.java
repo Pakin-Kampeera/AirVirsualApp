@@ -4,7 +4,7 @@ import AirVisual.Controller.AllEventHandler;
 import AirVisual.Controller.Draw.DrawButtonPane;
 import AirVisual.Controller.Draw.DrawNewPane;
 import AirVisual.Controller.NotificateAlert;
-import AirVisual.Model.FetchData;
+import AirVisual.Controller.FetchData;
 import AirVisual.Controller.Main;
 import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;

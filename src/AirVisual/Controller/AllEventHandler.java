@@ -2,7 +2,6 @@ package AirVisual.Controller;
 
 import AirVisual.Controller.Draw.DrawNewPane;
 import AirVisual.Model.AqiData;
-import AirVisual.Model.FetchData;
 import AirVisual.View.LoadPane;
 import AirVisual.View.Notication;
 import javafx.application.Platform;

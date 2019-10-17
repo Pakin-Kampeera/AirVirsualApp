@@ -1,6 +1,8 @@
-package AirVisual.Model;
+package AirVisual.Controller;
 
 import AirVisual.Controller.Draw.DrawNewPane;
+import AirVisual.Model.AqiData;
+import AirVisual.Model.Forecast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
