@@ -46,8 +46,4 @@ public class NotificateAlert {
     public static ArrayList<String> getMessage() {
         return message;
     }
-
-    public static void setMessage(ArrayList<String> message) {
-        NotificateAlert.message = message;
-    }
 }

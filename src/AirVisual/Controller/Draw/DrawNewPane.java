@@ -165,11 +165,6 @@ public class DrawNewPane {
         place.add(aqiData.getLocation());
 
         data.add(aqiData.getAqi());
-
-
-//        System.out.println(allPane);
-//        System.out.println(place);
-//        System.out.println(notice);
     }
 
     public static ArrayList<Node> getAllPane() {

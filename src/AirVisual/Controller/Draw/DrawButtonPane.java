@@ -26,7 +26,11 @@ public class DrawButtonPane {
 
         //Add place click
         button1.setOnAction(event -> AllEventHandler.onAdd());
+
+        //Button text color changed
         button1.setOnMouseEntered(event -> button1.setTextFill(Paint.valueOf("#303030")));
+
+        //Button text color changed
         button1.setOnMouseExited(event -> button1.setTextFill(Paint.valueOf("#4E8ABE")));
 
         button2 = new Button("REFRESH");
@@ -42,7 +46,10 @@ public class DrawButtonPane {
         //Refresh click
         button2.setOnAction(event -> AllEventHandler.onRefresh());
 
+        //Button text color changed
         button2.setOnMouseEntered(event -> button2.setTextFill(Paint.valueOf("#303030")));
+
+        //Button text color changed
         button2.setOnMouseExited(event -> button2.setTextFill(Paint.valueOf("#4E8ABE")));
 
         subPane.getChildren().addAll(button1, button2);

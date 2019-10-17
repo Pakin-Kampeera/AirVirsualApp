@@ -71,12 +71,10 @@ public class Notication {
         data.setPrefHeight(408);
         data.setPrefWidth(263);
 
-        top.getChildren().addAll(back, header, clear);
-
         showMessage();
 
+        top.getChildren().addAll(back, header, clear);
         pane.getChildren().add(data);
-
         Main.borderPane.setTop(top);
         Main.borderPane.setCenter(pane);
     }
