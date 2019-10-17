@@ -104,6 +104,8 @@ public class LoadPane {
         notification.setLayoutY(17);
         notification.setPickOnBounds(true);
         notification.setPreserveRatio(true);
+
+        //Click notification icon to go to notification scene
         notification.setOnMouseClicked(event -> AllEventHandler.onNotification());
 
         menu = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/menu.png")));

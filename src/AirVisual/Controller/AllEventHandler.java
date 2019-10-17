@@ -1,24 +1,20 @@
 package AirVisual.Controller;
 
 import AirVisual.Controller.Draw.DrawNewPane;
-import AirVisual.Model.AqiData;
 import AirVisual.View.LoadPane;
-import AirVisual.View.Notication;
+import AirVisual.View.Notification;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Optional;
 
 public class AllEventHandler {
     private static FetchData fetchData = new FetchData();
-    private static Notication notication = new Notication();
+    private static Notification notification = new Notification();
     private static LoadPane loadPane = new LoadPane();
-    private static NotificateAlert notificateAlert = new NotificateAlert();
 
     public static void onAdd() {
         try {
@@ -104,7 +100,7 @@ public class AllEventHandler {
     }
 
     public static void onNotification() {
-        notication.notificatonPage();
+        notification.notificatonPage();
     }
 
     public static void onBack() {
@@ -112,19 +108,20 @@ public class AllEventHandler {
         Main.borderPane.setCenter(LoadPane.getScrollPane());
     }
 
-    public static void onRefresh() throws IOException, ParseException, InterruptedException {
-        int count = AqiData.getCity().size();
-        for (int i = 0; i < count; i++) {
-            LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
-        }
-        DrawNewPane.getAllPane().clear();
-        LoadPane.vBox.getChildren().removeAll(LoadPane.getButtonAreaPane());
-        for (int i = 0; i < count; i++) {
-            loadPane.startToFetch(AqiData.getCity().get(i), AqiData.getState().get(i), AqiData.getCountry().get(i));
-            Thread.sleep(3000);
-        }
-        loadPane.loadWidget();
-        loadPane.showNotification();
+    public static void onDeleteAll() {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Do you really want to delete all widget?");
+        alert.getButtonTypes().addAll(ButtonType.NO, ButtonType.YES);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                for (int i = 0; i < DrawNewPane.getAllPane().size(); i++) {
+                    LoadPane.vBox.getChildren().removeAll(DrawNewPane.getAllPane().get(i));
+                }
+                DrawNewPane.getAllPane().clear();
+            }
+        });
     }
 
     private static class Results {

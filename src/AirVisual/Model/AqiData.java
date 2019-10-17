@@ -148,16 +148,4 @@ public class AqiData {
     public int getAqi() {
         return aqi;
     }
-
-    public static ArrayList<String> getCity() {
-        return city;
-    }
-
-    public static ArrayList<String> getState() {
-        return state;
-    }
-
-    public static ArrayList<String> getCountry() {
-        return country;
-    }
 }

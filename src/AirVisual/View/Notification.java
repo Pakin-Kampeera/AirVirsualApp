@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
-public class Notication {
+public class Notification {
     private static Pane top;
     private static ImageView back;
     private static Label header;
@@ -37,6 +37,7 @@ public class Notication {
         clear.setMnemonicParsing(false);
         clear.setStyle("-fx-background-color: transparent");
 
+        //Click to clear all notification
         clear.setOnMouseClicked(event -> {
             LoadPane.getBadge().setStyle("-fx-background-color: transparent");
             LoadPane.getBadge().setText("");
@@ -47,8 +48,10 @@ public class Notication {
             notificatonPage();
         });
 
+        //Button text color changed
         clear.setOnMouseEntered(event -> clear.setTextFill(Paint.valueOf("#A8A5A5")));
 
+        //Button text color changed
         clear.setOnMouseExited(event -> clear.setTextFill(Paint.valueOf("#000000")));
 
         back = new ImageView(new Image(getClass().getResourceAsStream("/AirVisual/assets/header/back.png")));
@@ -59,6 +62,7 @@ public class Notication {
         back.setPickOnBounds(true);
         back.setPreserveRatio(true);
 
+        //Click to go back to main scene
         back.setOnMouseClicked(event -> AllEventHandler.onBack());
 
         top = new Pane();

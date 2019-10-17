@@ -47,10 +47,6 @@ public class NotificateAlert {
         NotificateAlert.countBadge = countBadge;
     }
 
-    public static void setMessage(ArrayList<String> message) {
-        NotificateAlert.message = message;
-    }
-
     public static ArrayList<String> getMessage() {
         return message;
     }
