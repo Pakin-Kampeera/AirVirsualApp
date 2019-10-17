@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 public class DrawButtonPane {
     private Pane subPane;
     private Button button1, button2;
@@ -44,7 +47,17 @@ public class DrawButtonPane {
         button2.setStyle("-fx-background-color: transparent; -fx-border-color: lightgrey; -fx-border-radius: 5 5 5 5;");
 
         //Refresh click
-        button2.setOnAction(event -> AllEventHandler.onRefresh());
+        button2.setOnAction(event -> {
+            try {
+                AllEventHandler.onRefresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
         //Button text color changed
         button2.setOnMouseEntered(event -> button2.setTextFill(Paint.valueOf("#303030")));

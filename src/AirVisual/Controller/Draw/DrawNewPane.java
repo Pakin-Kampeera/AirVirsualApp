@@ -1,7 +1,6 @@
 package AirVisual.Controller.Draw;
 
 import AirVisual.Controller.AllEventHandler;
-import AirVisual.Controller.NotificateAlert;
 import AirVisual.Model.AqiData;
 import AirVisual.Model.Forecast;
 import javafx.geometry.Pos;
@@ -25,8 +24,6 @@ public class DrawNewPane {
     private DrawForecastTemp drawForecastTemp = new DrawForecastTemp();
     private static ArrayList<String> place = new ArrayList<>();
     private static ArrayList<Integer> data = new ArrayList<>();
-    private NotificateAlert notificateAlert = new NotificateAlert();
-    private static ArrayList<String> notice = new ArrayList<>();
 
     public void createNewPane(AqiData aqiData, Forecast forecast) {
         Pane mainPane = new Pane();

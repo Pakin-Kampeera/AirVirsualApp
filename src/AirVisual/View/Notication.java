@@ -6,8 +6,10 @@ import AirVisual.Controller.NotificateAlert;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -19,7 +21,8 @@ public class Notication {
     private static Label header;
     private static Button clear;
     private static VBox data;
-    private static Pane pane;
+    private static AnchorPane anchorPane;
+    private static ScrollPane scrollPane;
     private static Label text;
 
     public void notificatonPage() {
@@ -39,6 +42,7 @@ public class Notication {
             LoadPane.getBadge().setText("");
 
             NotificateAlert.getMessage().clear();
+            NotificateAlert.setCountBadge(0);
             System.out.println(NotificateAlert.getMessage());
             notificatonPage();
         });
@@ -61,9 +65,14 @@ public class Notication {
         top.setPrefHeight(49);
         top.setPrefWidth(311);
 
-        pane = new Pane();
-        pane.setPrefHeight(402);
-        pane.setPrefWidth(501);
+        scrollPane = new ScrollPane();
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setPrefWidth(200);
+        scrollPane.setPrefHeight(311);
+
+        anchorPane = new AnchorPane();
+        anchorPane.setPrefWidth(309);
 
         data = new VBox();
         data.setLayoutX(24);
@@ -74,9 +83,10 @@ public class Notication {
         showMessage();
 
         top.getChildren().addAll(back, header, clear);
-        pane.getChildren().add(data);
+        anchorPane.getChildren().add(data);
+        scrollPane.setContent(anchorPane);
         Main.borderPane.setTop(top);
-        Main.borderPane.setCenter(pane);
+        Main.borderPane.setCenter(scrollPane);
     }
 
     public void showMessage() {

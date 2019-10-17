@@ -5,7 +5,7 @@ import AirVisual.Controller.Draw.DrawNewPane;
 import java.util.ArrayList;
 
 public class NotificateAlert {
-    private int countBadge = 0;
+    private static int countBadge = 0;
     private static ArrayList<String> message = new ArrayList<>();
 
     public void show() {
@@ -39,8 +39,16 @@ public class NotificateAlert {
         }
     }
 
-    public int getCountBadge() {
+    public static int getCountBadge() {
         return countBadge;
+    }
+
+    public static void setCountBadge(int countBadge) {
+        NotificateAlert.countBadge = countBadge;
+    }
+
+    public static void setMessage(ArrayList<String> message) {
+        NotificateAlert.message = message;
     }
 
     public static ArrayList<String> getMessage() {

@@ -2,6 +2,8 @@ package AirVisual.Model;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class AqiData {
     private int aqi;
     private String downColor;
@@ -12,6 +14,9 @@ public class AqiData {
     private String icon;
     private String face;
     private String headColor;
+    private static ArrayList<String> city = new ArrayList<>();
+    private static ArrayList<String> state = new ArrayList<>();
+    private static ArrayList<String> country = new ArrayList<>();
 
     public void createObj(JSONObject data) {
         aqi = data.getJSONObject("current").getJSONObject("pollution").getInt("aqius");
@@ -23,6 +28,10 @@ public class AqiData {
         this.location = data.getString("state") + ", " + data.getString("country");
         this.icon = data.getJSONObject("current").getJSONObject("weather").getString("ic") + ".png";
         this.face = faceColor(aqi) + ".png";
+        city.add(data.getString("city"));
+        state.add(data.getString("state"));
+        country.add(data.getString("country"));
+
         printData();
     }
 
@@ -138,5 +147,17 @@ public class AqiData {
 
     public int getAqi() {
         return aqi;
+    }
+
+    public static ArrayList<String> getCity() {
+        return city;
+    }
+
+    public static ArrayList<String> getState() {
+        return state;
+    }
+
+    public static ArrayList<String> getCountry() {
+        return country;
     }
 }
