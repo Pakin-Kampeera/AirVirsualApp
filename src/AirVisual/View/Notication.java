@@ -21,10 +21,8 @@ public class Notication {
     private static VBox data;
     private static Pane pane;
     private static Label text;
-    private static NotificateAlert notificateAlert = new NotificateAlert();
 
     public void notificatonPage() {
-
         header = new Label("Notifications");
         header.setLayoutX(108);
         header.setLayoutY(17);
@@ -40,8 +38,9 @@ public class Notication {
             LoadPane.getBadge().setStyle("-fx-background-color: transparent");
             LoadPane.getBadge().setText("");
 
-            data.getChildren().removeAll(text);
-            text.setText("");
+            NotificateAlert.getMessage().clear();
+            System.out.println(NotificateAlert.getMessage());
+            notificatonPage();
         });
 
         clear.setOnMouseEntered(event -> clear.setTextFill(Paint.valueOf("#A8A5A5")));
@@ -66,12 +65,6 @@ public class Notication {
         pane.setPrefHeight(402);
         pane.setPrefWidth(501);
 
-        text = new Label("Tokyo, Japan should avoid outdoor activity");
-        text.setAlignment(Pos.TOP_LEFT);
-        text.setPrefHeight(41);
-        text.setPrefWidth(278);
-        text.setWrapText(true);
-
         data = new VBox();
         data.setLayoutX(24);
         data.setLayoutY(20);
@@ -79,9 +72,23 @@ public class Notication {
         data.setPrefWidth(263);
 
         top.getChildren().addAll(back, header, clear);
-        data.getChildren().addAll(text);
+
+        showMessage();
+
         pane.getChildren().add(data);
+
         Main.borderPane.setTop(top);
         Main.borderPane.setCenter(pane);
+    }
+
+    public void showMessage() {
+        for (int i = 0; i < NotificateAlert.getMessage().size(); i++) {
+            text = new Label(NotificateAlert.getMessage().get(i));
+            text.setAlignment(Pos.TOP_LEFT);
+            text.setPrefHeight(41);
+            text.setPrefWidth(278);
+            text.setWrapText(true);
+            data.getChildren().add(text);
+        }
     }
 }

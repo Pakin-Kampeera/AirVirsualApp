@@ -30,6 +30,7 @@ public class LoadPane {
     private static Label badge, text;
     private static ImageView air, earth, user, list, cart;
     private NotificateAlert notificateAlert = new NotificateAlert();
+    private Notication noticationText = new Notication();
     public static VBox vBox;
 
     public void loadHeader() {
