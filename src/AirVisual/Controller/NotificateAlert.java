@@ -24,7 +24,7 @@ public class NotificateAlert {
                 message.add("[ " + DrawNewPane.getPlace().get(i) + " ]" + " Increased likelihood of adverse effects and aggressive.");
                 countBadge++;
             } else if (DrawNewPane.getData().get(i) >= 201 && DrawNewPane.getData().get(i) <= 300) {
-                message.add("[ " + DrawNewPane.getPlace().get(i) + " ]" + " General public will bre noticeably effect.");
+                message.add("[ " + DrawNewPane.getPlace().get(i) + " ]" + " General public will be noticeably effect.");
                 countBadge++;
             } else if (DrawNewPane.getData().get(i) >= 301 && DrawNewPane.getData().get(i) <= 500) {
                 message.add("[ " + DrawNewPane.getPlace().get(i) + " ]" + " General public and sensitive groups are at high risk.");

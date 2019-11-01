@@ -72,9 +72,9 @@ public class AqiData {
         } else if (aqi >= 151 && aqi <= 200) {
             return "E66C6B";
         } else if (aqi >= 201 && aqi <= 300) {
-            return "FFFFFF";
+            return "A075B0";
         } else if (aqi >= 301 && aqi <= 500) {
-            return "FFFFFF";
+            return "A0707E";
         }
         return null;
     }
